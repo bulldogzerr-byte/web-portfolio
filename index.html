@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Морозов Иван — UX/UI Дизайнер | Портфолио</title>
   
-  <!-- Favicon в корневой папке -->
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <!-- Favicon в формате WebP -->
+  <link rel="icon" href="favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="favicon.webp">
 
-  <!-- Предзагрузка ключевых слайдов -->
-  <link rel="preload" as="image" href="Rosnation.png">
-  <link rel="preload" as="image" href="rosnation_guideline_slide-1.png">
-  <link rel="preload" as="image" href="rosnation_guideline_slide-2.png">
+  <!-- Предзагрузка ключевых WebP слайдов -->
+  <link rel="preload" as="image" href="Rosnation.webp">
+  <link rel="preload" as="image" href="rosnation_guideline_slide-1.webp">
+  <link rel="preload" as="image" href="rosnation_guideline_slide-2.webp">
 
   <!-- Шрифт Ubuntu -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==================== СБРОС И БАЗОВЫЕ СТИЛИ ==================== */
+    /* ==================== СБРОС И ОПТИМИЗИРОВАННЫЕ БАЗОВЫЕ СТИЛИ ==================== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -41,6 +41,7 @@
       position: relative;
     }
 
+    /* Оптимизированный фоновый арт-объект */
     .bg-shape {
       position: absolute;
       top: 50%;
@@ -62,7 +63,7 @@
       100% { transform: translate(-48%, -52%) rotate(12deg) scale(1.08) translateZ(0); }
     }
 
-    /* Иконки векторных диагональных стрелок */
+    /* Векторные стрелки */
     .inline-arrow-svg {
       width: 14px;
       height: 14px;
@@ -636,7 +637,7 @@
       line-height: 1.5;
     }
 
-    /* ==================== СТИЛИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (ПОЛНЫЙ АДАПТИВ) ==================== */
+    /* МОБИЛЬНЫЙ АДАПТИВ */
     @media (max-width: 768px) {
       body {
         height: auto;
@@ -649,7 +650,6 @@
         justify-content: center;
       }
 
-      /* Скрываем переключение Сетка/Карусель и подсказки на мобилках */
       .view-toggle-btn,
       .header-instruction-text,
       .nav-arrow,
@@ -657,7 +657,6 @@
         display: none !important;
       }
 
-      /* Главный экран: вертикальная лента карточек, скролл вниз */
       main {
         height: auto;
         overflow: visible;
@@ -694,7 +693,6 @@
       .modal-grid { grid-template-columns: 1fr; }
       .modal-window { padding: 25px 20px; border-radius: 24px; }
 
-      /* Просмотрщик Роснации на мобилках: только вертикальная лента и кнопка Закрыть */
       .viewer-header {
         padding: 15px 20px;
       }
@@ -748,7 +746,7 @@
     <span class="header-instruction-text" id="headerInstruction">Скролльте, перетаскивайте или используйте стрелочки, чтобы листать</span>
   </header>
 
-  <!-- Отрисованные Векторные Стрелки Навигации -->
+  <!-- Векторные Стрелки Навигации -->
   <button class="nav-arrow prev" id="arrowPrev" onclick="prevCard()" aria-label="Previous">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -762,7 +760,7 @@
     </svg>
   </button>
 
-  <!-- Основная Карусель / Сетка / Мобильная Лента -->
+  <!-- Основная Карусель / Сетка -->
   <main id="mainContainer">
     <div class="carousel-3d" id="carousel">
 
@@ -773,7 +771,7 @@
           <span class="card-num">01</span>
         </div>
         <div class="card-body-content">
-          <img src="Mosmed.png" class="card-icon-img" alt="Московская медицина" decoding="async" />
+          <img src="Mosmed.webp" class="card-icon-img" alt="Московская медицина" decoding="async" />
           <div>
             <h3 class="card-title">Московская медицина</h3>
             <p class="card-subtitle">Создание аналитических дашбордов</p>
@@ -795,7 +793,7 @@
           <span class="card-num">02</span>
         </div>
         <div class="card-body-content">
-          <img src="Youshka.png" class="card-icon-img" alt="youshka" decoding="async" />
+          <img src="Youshka.webp" class="card-icon-img" alt="youshka" decoding="async" />
           <div>
             <h3 class="card-title">youshka</h3>
             <p class="card-subtitle">Айдентика, верстка и интеграция AI</p>
@@ -818,9 +816,9 @@
         </div>
         <div class="card-body-content">
           <div class="split-icon-container-vertical">
-            <img src="Mert.png" class="card-icon-img-small" alt="Мерт" decoding="async" />
+            <img src="Mert.webp" class="card-icon-img-small" alt="Мерт" decoding="async" />
             <div class="icon-divider-horizontal"></div>
-            <img src="Barbarra.png" class="card-icon-img-small" alt="Barbarra L. Terra" decoding="async" />
+            <img src="Barbarra.webp" class="card-icon-img-small" alt="Barbarra L. Terra" decoding="async" />
           </div>
           <div>
             <h3 class="card-title">Мерт, Barbarra L. Terra</h3>
@@ -843,7 +841,7 @@
           <span class="card-num">04</span>
         </div>
         <div class="card-body-content">
-          <img src="Rosnation.png" class="card-icon-img" alt="Роснация" decoding="async" />
+          <img src="Rosnation.webp" class="card-icon-img" alt="Роснация" decoding="async" />
           <div>
             <h3 class="card-title">Роснация</h3>
             <p class="card-subtitle">Брендбук и руководство по фирменному стилю</p>
@@ -965,31 +963,32 @@
   </div>
 
   <script>
-    // Векторная SVG-стрелка для кнопок
+    // Векторная SVG-стрелка для динамических кнопок
     const svgArrowIcon = `<svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
 
     const iconGrid = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>`;
     const iconCarousel = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="6" y="1" width="9" height="9" rx="1.5" opacity="0.4"/><rect x="1" y="6" width="9" height="9" rx="1.5"/></svg>`;
 
-    // Слайды Роснации
+    // WebP Слайды Роснации
     const rosnaciyaSlideImages = [
-      'rosnation_guideline_slide-1.png',
-      'rosnation_guideline_slide-2.png',
-      'rosnation_guideline_slide-3.png',
-      'rosnation_guideline_slide-4.png',
-      'rosnation_guideline_slide-5.png',
-      'rosnation_guideline_slide-6.png',
-      'rosnation_guideline_slide-7.png',
-      'rosnation_guideline_slide-8.png',
-      'rosnation_guideline_slide-9.png'
+      'rosnation_guideline_slide-1.webp',
+      'rosnation_guideline_slide-2.webp',
+      'rosnation_guideline_slide-3.webp',
+      'rosnation_guideline_slide-4.webp',
+      'rosnation_guideline_slide-5.webp',
+      'rosnation_guideline_slide-6.webp',
+      'rosnation_guideline_slide-7.webp',
+      'rosnation_guideline_slide-8.webp',
+      'rosnation_guideline_slide-9.webp'
     ];
 
+    // Фоновый предзагрузчик WebP ресурсов
     const assetsToPreload = [
-      'Mosmed.png',
-      'Youshka.png',
-      'Mert.png',
-      'Barbarra.png',
-      'Rosnation.png',
+      'Mosmed.webp',
+      'Youshka.webp',
+      'Mert.webp',
+      'Barbarra.webp',
+      'Rosnation.webp',
       ...rosnaciyaSlideImages
     ];
 
@@ -1300,12 +1299,10 @@
       if (e.target === document.getElementById('resumeModalOverlay')) closeResumeModal();
     }
 
-    // Полноэкранный ридер Роснации
     function openFullViewer() {
       closeModal();
       viewerSlideIndex = 0;
 
-      // На мобилках всегда включается вертикальная лента
       if (isMobile()) {
         isFeedMode = true;
       } else {
