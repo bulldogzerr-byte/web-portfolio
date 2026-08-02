@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==================== СБРОС И ОПТИМИЗИРОВАННЫЕ БАЗОВЫЕ СТИЛИ ==================== */
+    /* ==================== СБРОС И БАЗОВЫЕ СТИЛИ ==================== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -41,7 +41,6 @@
       position: relative;
     }
 
-    /* Фоновый арт-объект */
     .bg-shape {
       position: absolute;
       top: 50%;
@@ -61,6 +60,20 @@
     @keyframes float {
       0% { transform: translate(-50%, -50%) rotate(0deg) scale(1) translateZ(0); }
       100% { transform: translate(-48%, -52%) rotate(12deg) scale(1.08) translateZ(0); }
+    }
+
+    /* Иконки векторных диагональных стрелок */
+    .inline-arrow-svg {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* ==================== ХЕДЕР ==================== */
@@ -303,6 +316,8 @@
       transition: opacity 0.2s;
       color: #111;
       font-weight: 700;
+      display: flex;
+      align-items: center;
     }
 
     .card.active:hover .card-hint { opacity: 0.85; }
@@ -524,14 +539,6 @@
       gap: 30px;
     }
 
-    @media (max-width: 768px) {
-      .card { width: 85vw; height: 330px; }
-      .nav-arrow { display: none; }
-      .modal-grid { grid-template-columns: 1fr; }
-      header { padding: 20px; flex-direction: column; gap: 12px; text-align: center; }
-      .carousel-3d.grid-mode { grid-template-columns: 1fr; }
-    }
-
     .modal-body h2 {
       font-size: 1.8rem;
       font-weight: 700;
@@ -570,9 +577,10 @@
 
     .btn-action {
       font-family: 'Ubuntu', sans-serif;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      text-align: center;
       background: #111;
       color: #fff;
       text-decoration: none;
@@ -627,6 +635,89 @@
       color: #444;
       line-height: 1.5;
     }
+
+    /* ==================== СТИЛИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (ПОЛНЫЙ АДАПТИВ) ==================== */
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+      }
+
+      header {
+        padding: 20px;
+        justify-content: center;
+      }
+
+      /* Скрываем переключение Сетка/Карусель и подсказки на мобилках */
+      .view-toggle-btn,
+      .header-instruction-text,
+      .nav-arrow,
+      .card-hint {
+        display: none !important;
+      }
+
+      /* Главный экран: вертикальная лента карточек, скролл вниз */
+      main {
+        height: auto;
+        overflow: visible;
+        padding: 10px 16px 50px 16px;
+        align-items: flex-start;
+      }
+
+      .carousel-3d {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: auto;
+        width: 100%;
+        perspective: none;
+        transform-style: flat;
+      }
+
+      .card {
+        position: relative !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 220px;
+        opacity: 1 !important;
+        filter: none !important;
+        z-index: 1 !important;
+        padding: 24px 20px;
+        border-radius: 24px;
+      }
+
+      .card-title { font-size: 1.25rem; }
+
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-window { padding: 25px 20px; border-radius: 24px; }
+
+      /* Просмотрщик Роснации на мобилках: только вертикальная лента и кнопка Закрыть */
+      .viewer-header {
+        padding: 15px 20px;
+      }
+
+      .viewer-controls .viewer-btn:not(.close-btn),
+      .viewer-controls .viewer-page-num {
+        display: none !important;
+      }
+
+      .viewer-content {
+        padding: 16px 12px;
+        align-items: flex-start;
+      }
+
+      .scroll-feed-container {
+        padding: 0 0 40px 0;
+        gap: 16px;
+      }
+
+      .scroll-feed-img {
+        border-radius: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -671,7 +762,7 @@
     </svg>
   </button>
 
-  <!-- Основная Карусель / Сетка -->
+  <!-- Основная Карусель / Сетка / Мобильная Лента -->
   <main id="mainContainer">
     <div class="carousel-3d" id="carousel">
 
@@ -689,7 +780,10 @@
           </div>
         </div>
         <div class="card-bottom">
-          <span class="card-hint">Подробнее о проекте ↗</span>
+          <span class="card-hint">
+            Подробнее о проекте 
+            <svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
           <span class="card-num">2025 — н.в.</span>
         </div>
       </div>
@@ -708,7 +802,10 @@
           </div>
         </div>
         <div class="card-bottom">
-          <span class="card-hint">Подробнее о проекте ↗</span>
+          <span class="card-hint">
+            Подробнее о проекте 
+            <svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
           <span class="card-num">2024 — н.в.</span>
         </div>
       </div>
@@ -731,7 +828,10 @@
           </div>
         </div>
         <div class="card-bottom">
-          <span class="card-hint">Подробнее о проекте ↗</span>
+          <span class="card-hint">
+            Подробнее о проекте 
+            <svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
           <span class="card-num">2026 — н.в.</span>
         </div>
       </div>
@@ -750,7 +850,10 @@
           </div>
         </div>
         <div class="card-bottom">
-          <span class="card-hint">Открыть всю работу целиком (9 слайдов) ↗</span>
+          <span class="card-hint">
+            Открыть всю работу целиком (9 слайдов) 
+            <svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
           <span class="card-num">2025</span>
         </div>
       </div>
@@ -862,11 +965,13 @@
   </div>
 
   <script>
-    // SVG Иконки кнопки
+    // Векторная SVG-стрелка для кнопок
+    const svgArrowIcon = `<svg class="inline-arrow-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
+
     const iconGrid = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>`;
     const iconCarousel = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="6" y="1" width="9" height="9" rx="1.5" opacity="0.4"/><rect x="1" y="6" width="9" height="9" rx="1.5"/></svg>`;
 
-    // Слайды Роснации в корневой папке
+    // Слайды Роснации
     const rosnaciyaSlideImages = [
       'rosnation_guideline_slide-1.png',
       'rosnation_guideline_slide-2.png',
@@ -879,7 +984,6 @@
       'rosnation_guideline_slide-9.png'
     ];
 
-    // Фоновый предзагрузчик
     const assetsToPreload = [
       'Mosmed.png',
       'Youshka.png',
@@ -922,7 +1026,7 @@
         stack: "Figma, AI Tools, Branding",
         hasFullCase: false,
         links: [
-          { text: "Перейти на сайт youshka ↗", url: "https://youshka-web.onrender.com/" }
+          { text: "Перейти на сайт youshka", url: "https://youshka-web.onrender.com/" }
         ]
       },
       {
@@ -934,8 +1038,8 @@
         stack: "Tilda, Figma, Web Design",
         hasFullCase: false,
         links: [
-          { text: "Сайт Мерт (mertshow.com) ↗", url: "https://mertshow.com/" },
-          { text: "Сайт Barbarra L. Terra ↗", url: "https://barbaralterra.com/" }
+          { text: "Сайт Мерт (mertshow.com)", url: "https://mertshow.com/" },
+          { text: "Сайт Barbarra L. Terra", url: "https://barbaralterra.com/" }
         ]
       },
       {
@@ -967,8 +1071,12 @@
     let viewerSlideIndex = 0;
     let isFeedMode = false;
 
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
     function updateCarousel() {
-      if (isGridMode) return;
+      if (isGridMode || isMobile()) return;
 
       cards.forEach((card, index) => {
         let offset = index - currentIndex;
@@ -1002,7 +1110,7 @@
     }
 
     function animate() {
-      if (!isDragging && !isGridMode) {
+      if (!isDragging && !isGridMode && !isMobile()) {
         currentIndex += (targetIndex - currentIndex) * 0.12;
       }
       updateCarousel();
@@ -1011,6 +1119,7 @@
     requestAnimationFrame(animate);
 
     function toggleGridMode() {
+      if (isMobile()) return;
       isGridMode = !isGridMode;
       const carousel = document.getElementById('carousel');
       const toggleText = document.getElementById('gridToggleText');
@@ -1037,8 +1146,8 @@
       }
     }
 
-    function prevCard() { if (!isGridMode) targetIndex = Math.round(targetIndex) - 1; }
-    function nextCard() { if (!isGridMode) targetIndex = Math.round(targetIndex) + 1; }
+    function prevCard() { if (!isGridMode && !isMobile()) targetIndex = Math.round(targetIndex) - 1; }
+    function nextCard() { if (!isGridMode && !isMobile()) targetIndex = Math.round(targetIndex) + 1; }
 
     window.addEventListener('keydown', (e) => {
       if (document.getElementById('fullViewer').classList.contains('active')) {
@@ -1054,14 +1163,14 @@
         }
         return;
       }
-      if (!isGridMode) {
+      if (!isGridMode && !isMobile()) {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') prevCard();
         if (e.key === 'ArrowRight' || e.key === 'ArrowUp') nextCard();
       }
     });
 
     window.addEventListener('wheel', (e) => {
-      if (isGridMode || document.getElementById('fullViewer').classList.contains('active') || 
+      if (isGridMode || isMobile() || document.getElementById('fullViewer').classList.contains('active') || 
           document.getElementById('modalOverlay').classList.contains('active') ||
           document.getElementById('resumeModalOverlay').classList.contains('active')) return;
 
@@ -1082,7 +1191,7 @@
     const mainContainer = document.getElementById('mainContainer');
 
     mainContainer.addEventListener('pointerdown', (e) => {
-      if (isGridMode) return;
+      if (isGridMode || isMobile()) return;
       isDragging = true;
       startX = e.clientX;
       dragDistance = 0;
@@ -1091,7 +1200,7 @@
     });
 
     window.addEventListener('pointermove', (e) => {
-      if (!isDragging || isGridMode) return;
+      if (!isDragging || isGridMode || isMobile()) return;
       const dx = e.clientX - startX;
       dragDistance += Math.abs(dx);
 
@@ -1107,15 +1216,15 @@
     });
 
     window.addEventListener('pointerup', () => {
-      if (!isDragging || isGridMode) return;
+      if (!isDragging || isGridMode || isMobile()) return;
       isDragging = false;
       targetIndex = Math.round(targetIndex);
     });
 
     function handleCardClick(index) {
-      if (!isGridMode && dragDistance > 8) return;
+      if (!isGridMode && !isMobile() && dragDistance > 8) return;
 
-      if (isGridMode) {
+      if (isGridMode || isMobile()) {
         if (projectsData[index].hasFullCase) {
           openFullViewer();
         } else {
@@ -1153,14 +1262,14 @@
       if (data.hasFullCase) {
         const btn = document.createElement('button');
         btn.className = 'btn-action';
-        btn.innerText = 'Открыть работу полностью (9 слайдов) ↗';
+        btn.innerHTML = `Открыть работу полностью (9 слайдов) ${svgArrowIcon}`;
         btn.onclick = openFullViewer;
         btnContainer.appendChild(btn);
       } else if (data.links && data.links.length > 0) {
         data.links.forEach(linkObj => {
           const a = document.createElement('a');
           a.className = 'btn-action';
-          a.innerText = linkObj.text;
+          a.innerHTML = `${linkObj.text} ${svgArrowIcon}`;
           a.href = linkObj.url;
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
@@ -1191,11 +1300,19 @@
       if (e.target === document.getElementById('resumeModalOverlay')) closeResumeModal();
     }
 
+    // Полноэкранный ридер Роснации
     function openFullViewer() {
       closeModal();
       viewerSlideIndex = 0;
-      isFeedMode = false;
-      document.getElementById('toggleModeBtn').innerText = "Режим: Слайды";
+
+      // На мобилках всегда включается вертикальная лента
+      if (isMobile()) {
+        isFeedMode = true;
+      } else {
+        isFeedMode = false;
+        document.getElementById('toggleModeBtn').innerText = "Режим: Слайды";
+      }
+
       renderFullViewerContent();
       document.getElementById('fullViewer').classList.add('active');
     }
@@ -1208,7 +1325,7 @@
       const area = document.getElementById('viewerContentArea');
       const counter = document.getElementById('viewerPageCounter');
 
-      if (isFeedMode) {
+      if (isFeedMode || isMobile()) {
         area.classList.add('feed-mode');
         let html = '<div class="scroll-feed-container">';
         rosnaciyaSlideImages.forEach((src, idx) => {
@@ -1216,28 +1333,29 @@
         });
         html += '</div>';
         area.innerHTML = html;
-        counter.innerText = `Лента (9 слайдов)`;
+        if (counter) counter.innerText = `Лента (9 слайдов)`;
         area.scrollTop = 0;
       } else {
         area.classList.remove('feed-mode');
         area.innerHTML = `<img class="single-slide-img" src="${rosnaciyaSlideImages[viewerSlideIndex]}" alt="Слайд ${viewerSlideIndex + 1}" loading="eager" decoding="async" />`;
-        counter.innerText = `${viewerSlideIndex + 1} / ${rosnaciyaSlideImages.length}`;
+        if (counter) counter.innerText = `${viewerSlideIndex + 1} / ${rosnaciyaSlideImages.length}`;
       }
     }
 
     function prevViewerSlide() {
-      if (isFeedMode) return;
+      if (isFeedMode || isMobile()) return;
       viewerSlideIndex = (viewerSlideIndex - 1 + rosnaciyaSlideImages.length) % rosnaciyaSlideImages.length;
       renderFullViewerContent();
     }
 
     function nextViewerSlide() {
-      if (isFeedMode) return;
+      if (isFeedMode || isMobile()) return;
       viewerSlideIndex = (viewerSlideIndex + 1) % rosnaciyaSlideImages.length;
       renderFullViewerContent();
     }
 
     function toggleFeedMode() {
+      if (isMobile()) return;
       isFeedMode = !isFeedMode;
       document.getElementById('toggleModeBtn').innerText = isFeedMode ? "Режим: Лента" : "Режим: Слайды";
       renderFullViewerContent();
