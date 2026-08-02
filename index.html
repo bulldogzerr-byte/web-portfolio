@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Морозов Иван — UX/UI Дизайнер | Портфолио</title>
   
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <!-- Favicon в корневой папке -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Предзагрузка ключевых слайдов в шапке браузера -->
+  <!-- Предзагрузка ключевых слайдов -->
   <link rel="preload" as="image" href="Rosnation.png">
-  <link rel="preload" as="image" href="rosnation/rosnation_guideline_slide-1.png">
-  <link rel="preload" as="image" href="rosnation/rosnation_guideline_slide-2.png">
+  <link rel="preload" as="image" href="rosnation_guideline_slide-1.png">
+  <link rel="preload" as="image" href="rosnation_guideline_slide-2.png">
 
   <!-- Шрифт Ubuntu -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
       position: relative;
     }
 
-    /* Оптимизированный фоновый арт-объект */
+    /* Фоновый арт-объект */
     .bg-shape {
       position: absolute;
       top: 50%;
@@ -307,7 +307,7 @@
 
     .card.active:hover .card-hint { opacity: 0.85; }
 
-    /* Стрелки */
+    /* Отрисованные Векторные Стрелки */
     .nav-arrow {
       position: absolute;
       top: 50%;
@@ -325,7 +325,6 @@
       cursor: pointer;
       z-index: 60;
       transition: transform 0.2s ease, background 0.2s ease;
-      font-size: 1.2rem;
       font-family: 'Ubuntu', sans-serif;
       box-shadow: 0 10px 25px rgba(0,0,0,0.04);
     }
@@ -383,13 +382,14 @@
     .viewer-controls {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
 
     .viewer-page-num {
       font-weight: 500;
       font-size: 0.9rem;
       letter-spacing: 0.5px;
+      margin: 0 6px;
     }
 
     .viewer-btn {
@@ -397,11 +397,14 @@
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.85rem;
       cursor: pointer;
       transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .viewer-btn:hover { background: rgba(255, 255, 255, 0.3); }
@@ -654,9 +657,19 @@
     <span class="header-instruction-text" id="headerInstruction">Скролльте, перетаскивайте или используйте стрелочки, чтобы листать</span>
   </header>
 
-  <!-- Стрелки навигации -->
-  <button class="nav-arrow prev" id="arrowPrev" onclick="prevCard()" aria-label="Previous">←</button>
-  <button class="nav-arrow next" id="arrowNext" onclick="nextCard()" aria-label="Next">→</button>
+  <!-- Отрисованные Векторные Стрелки Навигации -->
+  <button class="nav-arrow prev" id="arrowPrev" onclick="prevCard()" aria-label="Previous">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+  </button>
+  <button class="nav-arrow next" id="arrowNext" onclick="nextCard()" aria-label="Next">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+      <polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </button>
 
   <!-- Основная Карусель / Сетка -->
   <main id="mainContainer">
@@ -820,7 +833,6 @@
             <span class="meta-label">Телефон</span>
             <span class="meta-value">+7 (919) 200 66 19</span>
           </div>
-          <a href="https://t.me/bulldogzerr" target="_blank" class="btn-action">Написать в Telegram ↗</a>
         </div>
       </div>
     </div>
@@ -835,9 +847,13 @@
       </div>
       <div class="viewer-controls">
         <button class="viewer-btn" onclick="toggleFeedMode()" id="toggleModeBtn">Режим: Слайды</button>
-        <button class="viewer-btn" onclick="prevViewerSlide()">←</button>
+        <button class="viewer-btn" onclick="prevViewerSlide()" aria-label="Предыдущий слайд">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
         <span class="viewer-page-num" id="viewerPageCounter">1 / 9</span>
-        <button class="viewer-btn" onclick="nextViewerSlide()">→</button>
+        <button class="viewer-btn" onclick="nextViewerSlide()" aria-label="Следующий слайд">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
         <button class="viewer-btn close-btn" onclick="closeFullViewer()">✕ Закрыть</button>
       </div>
     </div>
@@ -846,24 +862,24 @@
   </div>
 
   <script>
-    // Иконки кнопок
+    // SVG Иконки кнопки
     const iconGrid = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>`;
     const iconCarousel = `<svg width="15" height="15" viewBox="0 0 16 16" fill="#111111"><rect x="6" y="1" width="9" height="9" rx="1.5" opacity="0.4"/><rect x="1" y="6" width="9" height="9" rx="1.5"/></svg>`;
 
-    // Слайды Роснации
+    // Слайды Роснации в корневой папке
     const rosnaciyaSlideImages = [
-      'rosnation/rosnation_guideline_slide-1.png',
-      'rosnation/rosnation_guideline_slide-2.png',
-      'rosnation/rosnation_guideline_slide-3.png',
-      'rosnation/rosnation_guideline_slide-4.png',
-      'rosnation/rosnation_guideline_slide-5.png',
-      'rosnation/rosnation_guideline_slide-6.png',
-      'rosnation/rosnation_guideline_slide-7.png',
-      'rosnation/rosnation_guideline_slide-8.png',
-      'rosnation/rosnation_guideline_slide-9.png'
+      'rosnation_guideline_slide-1.png',
+      'rosnation_guideline_slide-2.png',
+      'rosnation_guideline_slide-3.png',
+      'rosnation_guideline_slide-4.png',
+      'rosnation_guideline_slide-5.png',
+      'rosnation_guideline_slide-6.png',
+      'rosnation_guideline_slide-7.png',
+      'rosnation_guideline_slide-8.png',
+      'rosnation_guideline_slide-9.png'
     ];
 
-    // ==================== АВТОМАТИЧЕСКИЙ ФОНОВЫЙ ПРЕДЗАГРУЗЧИК (0 мс задержки) ====================
+    // Фоновый предзагрузчик
     const assetsToPreload = [
       'Mosmed.png',
       'Youshka.png',
@@ -895,9 +911,7 @@
         role: "UX/UI Дизайнер",
         stack: "Figma, UX Research, Dashboards",
         hasFullCase: false,
-        links: [
-          { text: "Обсудить проект в Telegram ↗", url: "https://t.me/bulldogzerr" }
-        ]
+        links: []
       },
       {
         category: "UX/UI & Brand",
